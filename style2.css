@@ -642,3 +642,52 @@ body {
   50% { transform: scale(0.5) rotate(79deg) rotateX(10deg) rotateY(-200deg); }
 }
 
+/* VALENTINE TEXT */
+.valentine-text {
+  position: absolute;
+  top: 8vh;
+  width: 100%;
+  text-align: center;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.valentine-text span {
+  display: inline-block;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: #ffe6f2;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+
+  /* reveal effect */
+  overflow: hidden;
+  border-right: 2px solid rgba(255, 230, 242, 0.75);
+  width: 0;
+
+  /* glow */
+  text-shadow:
+    0 0 8px rgba(255, 182, 213, 0.6),
+    0 0 18px rgba(255, 120, 170, 0.4);
+
+  animation:
+    reveal-text 3.5s ease forwards,
+    blink-caret 0.8s step-end infinite;
+  animation-delay: 2.2s;
+}
+
+/* stop caret blink after reveal */
+body:not(.not-loaded) .valentine-text span {
+  animation-fill-mode: forwards;
+}
+
+@keyframes reveal-text {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+
